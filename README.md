@@ -13,8 +13,8 @@ Eclipse is optional.
 ## Clone and run
 
 ```sh
-git clone https://github.com/OYAsci/smart-house.git
-cd smart-house
+git clone https://github.com/OYAsci/Smart-House-Simulation-Using-a-Multi-Agent-System-JADE-.git
+cd Smart-House-Simulation-Using-a-Multi-Agent-System-JADE
 ```
 
 Run the following commands from the repository root, which contains the `smarthouse` and `jade` folders.
@@ -78,6 +78,16 @@ Transition probabilities are calculated as the number of observations of a parti
 4. The smart controller sends lighting intensities to the light controller and GUI bridge: sleeping uses 0, screen use 30, showering 80, and other activities 100. Rooms other than the resident's current room receive 0.
 5. The temperature sensor generates small random temperature changes. The thermostat selects heating below 20.5°C, cooling above 21.5°C, and off within that range. The GUI bridge forwards state updates to the interface.
 6. Guest arrivals can produce security alerts for unauthorized strangers, and the controller can send a bedtime reminder to the resident.
+7. Agent communication : 
+| Sender | Receiver | Example message |
+|---|---|---|
+| `ResidentAgent` | `MotionSensorAgent` | `RESIDENT_STATE` |
+| `MotionSensorAgent` | `LightControllerAgent` | `MOTION_DETECTED:<location>` |
+| `TemperatureSensorAgent` | `ThermostatAgent` | `TEMPERATURE:<value>` |
+| `TemperatureSensorAgent` | `GUIBridgeAgent` | `TEMPERATURE:<value>` |
+| `ThermostatAgent` | `GUIBridgeAgent` | `THERMOSTAT:<temp>:<mode>` |
+| `GuestAgent` | `SmartControllerAgent` | `PERSON_DETECTED:<id>:<type>:<location>:<authorized>` |
+| `PatternAnalyzerAgent` | `SmartControllerAgent` | Learned resident patterns |
 
 ## Current limitations
 
