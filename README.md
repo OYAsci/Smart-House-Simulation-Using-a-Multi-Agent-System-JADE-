@@ -79,6 +79,7 @@ Transition probabilities are calculated as the number of observations of a parti
 5. The temperature sensor generates small random temperature changes. The thermostat selects heating below 20.5°C, cooling above 21.5°C, and off within that range. The GUI bridge forwards state updates to the interface.
 6. Guest arrivals can produce security alerts for unauthorized strangers, and the controller can send a bedtime reminder to the resident.
 7. Agent communication : 
+
 | Sender | Receiver | Example message |
 |---|---|---|
 | `ResidentAgent` | `MotionSensorAgent` | `RESIDENT_STATE` |
